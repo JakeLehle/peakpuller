@@ -1,0 +1,102 @@
+{
+    "chip.title" : "Example (paired-end)",
+    "chip.description" : "This is an template input JSON for paired-end sample.",
+
+    "chip.pipeline_type" : "tf",
+    "chip.aligner" : "bowtie2",
+    "chip.align_only" : false,
+    "chip.true_rep_only" : false,
+
+    "chip.genome_tsv" : "genome/hg38/hg38.tsv",
+
+    "chip.paired_end" : true,
+    "chip.ctl_paired_end" : true,
+
+    "chip.fastqs_rep1_R1" : [ "rep1_R1_L1.fastq.gz", "rep1_R1_L2.fastq.gz", "rep1_R1_L3.fastq.gz" ],
+    "chip.fastqs_rep1_R2" : [ "rep1_R2_L1.fastq.gz", "rep1_R2_L2.fastq.gz", "rep1_R2_L3.fastq.gz" ],
+    "chip.fastqs_rep2_R1" : [ "rep2_R1_L1.fastq.gz", "rep2_R1_L2.fastq.gz" ],
+    "chip.fastqs_rep2_R2" : [ "rep2_R2_L1.fastq.gz", "rep2_R2_L2.fastq.gz" ],
+
+    "chip.ctl_fastqs_rep1_R1" : [ "ctl1_R1.fastq.gz" ],
+    "chip.ctl_fastqs_rep1_R2" : [ "ctl1_R2.fastq.gz" ],
+    "chip.ctl_fastqs_rep2_R1" : [ "ctl2_R1.fastq.gz" ],
+    "chip.ctl_fastqs_rep2_R2" : [ "ctl2_R2.fastq.gz" ],
+
+    "chip.use_bwa_mem_for_pe" : false,
+    "chip.bwa_mem_read_len_limit" : 70,
+    "chip.use_bowtie2_local_mode" : false,
+
+    "chip.crop_length" : 0,
+
+    "chip.mapq_thresh" : 30,
+    "chip.dup_marker" : "picard",
+    "chip.no_dup_removal" : false,
+
+    "chip.subsample_reads" : 0,
+    "chip.ctl_subsample_reads" : 0,
+    "chip.xcor_subsample_reads" : 15000000,
+    "chip.pseudoreplication_random_seed" : 0,
+
+    "chip.xcor_trim_bp" : 50,
+    "chip.use_filt_pe_ta_for_xcor" : false,
+
+    "chip.always_use_pooled_ctl" : true,
+    "chip.ctl_depth_ratio" : 1.2,
+
+    "chip.peak_caller" : null,
+    "chip.cap_num_peak_macs2" : 500000,
+    "chip.pval_thresh" : 0.01,
+    "chip.fdr_thresh" : 0.01,
+    "chip.idr_thresh" : 0.05,
+    "chip.cap_num_peak_spp" : 300000,
+
+    "chip.enable_jsd" : true,
+    "chip.enable_gc_bias" : true,
+    "chip.enable_count_signal_track" : false,
+
+    "chip.filter_chrs" : [],
+
+    "chip.align_cpu" : 6,
+    "chip.align_bowtie2_mem_factor" : 0.15,
+    "chip.align_bwa_mem_factor" : 1.0,
+    "chip.align_time_hr" : 48,
+    "chip.align_bowtie2_disk_factor" : 8.0,
+    "chip.align_bwa_disk_factor" : 8.0,
+
+    "chip.filter_cpu" : 4,
+    "chip.filter_mem_factor" : 0.4,
+    "chip.filter_time_hr" : 24,
+    "chip.filter_disk_factor" : 8.0,
+
+    "chip.bam2ta_cpu" : 2,
+    "chip.bam2ta_mem_factor" : 0.35,
+    "chip.bam2ta_time_hr" : 6,
+    "chip.bam2ta_disk_factor" : 4.0,
+
+    "chip.spr_mem_factor" : 13.5,
+    "chip.spr_disk_factor" : 18.0,
+
+    "chip.jsd_cpu" : 4,
+    "chip.jsd_mem_factor" : 0.1,
+    "chip.jsd_time_hr" : 6,
+    "chip.jsd_disk_factor" : 2.0,
+
+    "chip.xcor_cpu" : 2,
+    "chip.xcor_mem_factor" : 1.0,
+    "chip.xcor_time_hr" : 24,
+    "chip.xcor_disk_factor" : 4.5,
+
+    "chip.subsample_ctl_mem_factor" : 14.0,
+    "chip.subsample_ctl_disk_factor" : 15.0,
+
+    "chip.call_peak_cpu" : 6,
+    "chip.call_peak_spp_mem_factor" : 5.0,
+    "chip.call_peak_macs2_mem_factor" : 5.0,
+    "chip.call_peak_time_hr" : 72,
+    "chip.call_peak_spp_disk_factor" : 5.0,
+    "chip.call_peak_macs2_disk_factor" : 30.0,
+
+    "chip.macs2_signal_track_mem_factor" : 12.0,
+    "chip.macs2_signal_track_time_hr" : 24,
+    "chip.macs2_signal_track_disk_factor" : 80.0
+}

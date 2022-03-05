@@ -1,0 +1,40 @@
+annotation_min_mapq:
+  10
+min_cpg:
+  5
+min_diff:
+  0.3
+min_cov:
+  5
+rawsuffixregex:
+  first:  '(_1|_R1_[0-9]+)\.(fastq|fq)(\.gz)?'
+  second: '(_2|_R2_[0-9]+)\.(fastq|fq)(\.gz)?'
+target_files: [
+  'dmr/annotated-dmrs.csv',
+  'qc/multiqc_report.html',
+  'qc/methylation_metrics.csv',
+  'segmentation/umr-lmr-all.csv'
+]
+dmr_tools: [
+  'bsseq',
+  #'camel',
+  'metilene'
+]
+promoter_tss_distances: [
+  -1000,
+  1000
+]
+annotation_allowed_biotypes: [
+  'protein_coding',
+  'lncRNA',
+  'miRNA'
+]
+temp_dir: '/tmp/'
+methylation_rate_on_chromosomes: []
+methylseekr_fdr_cutoff: 5
+methylseekr_methylation_cutoff: 0.5
+java_memory_gb:
+  32
+bsseq_local_correct:
+  FALSE
+sample_fastq_csv:
