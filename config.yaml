@@ -1,0 +1,22 @@
+experiment_title: My Example Chip-seq Project Paired-End
+experiment_description: This is a template description of a ChIP-seq experiment
+transcription_factor_or_histone_chip: tf
+aligner: bwa
+duplication_marker: picard
+genome_tsv: path/to/genome/tsv/genome.tsv
+experimental_reads_are_paired_end: true
+control_reads_are_Paired_end: true
+always_ues_pooled_ctl: true
+experimental_rep_R1: 
+- 
+-
+-
+experimental_rep_R2:        
+control_rep_R1:
+control_rep_R2:
+target_files:  
+- dmr/annotated-dmrs.csv
+- qc/multiqc_report.html
+- qc/methylation_metrics.csv
+- segmentation/umr-lmr-all.csv
+temp_dir: /tmp/
