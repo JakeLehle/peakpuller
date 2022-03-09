@@ -4,7 +4,7 @@ import setuptools
 #   long_description = fh.read()
 
 setuptools.setup(
-    name='chip-chip',
+    name='peakpuller',
     version='0.1.0',
     author='Jake Lehle',
     author_email='jake.lehle@utsa.edu',
@@ -19,9 +19,7 @@ setuptools.setup(
     ],
     package_data={
         'snakemake_wrapper': [
-            #'annotation/*',
             'scripts/*.R',
-            #'submodules/camel/**/*',
             'envs/*.yaml',
             'Snakefile'
         ],
@@ -29,7 +27,6 @@ setuptools.setup(
             '*.R'
         ],
         'cli': [
-            #'annotation_download_links.yaml',
             'optionals.yaml'
         ]
     },
