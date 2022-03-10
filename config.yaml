@@ -5,8 +5,8 @@ aligner: bwa
 duplication_marker: picard
 genome_tsv: path/to/genome/tsv/genome.tsv
 experimental_reads_are_paired_end: true
-control_reads_are_Paired_end: true
-always_ues_pooled_ctl: true
+control_reads_are_paired_end: true
+always_use_pooled_ctl: true
 experimental_rep_R1: 
 - 
 -

@@ -45,6 +45,6 @@ setuptools.setup(
     ],
     entry_points='''
         [console_scripts]
-        chip-chip=cli.cli:main
+        peakpuller=cli.cli:main
     '''
 )
