@@ -1,22 +1,22 @@
-experiment_title: My Example Chip-seq Project Paired-End
-experiment_description: This is a template description of a ChIP-seq experiment
-transcription_factor_or_histone_chip: tf
 aligner: bwa
-duplication_marker: picard
-genome_tsv: path/to/genome/tsv/genome.tsv
-experimental_reads_are_paired_end: true
-control_reads_are_paired_end: true
 always_use_pooled_ctl: true
-experimental_rep_R1: 
-- 
--
--
-experimental_rep_R2:        
-control_rep_R1:
-control_rep_R2:
-target_files:  
+computing_threads: 8
+control_reads_are_Paired_end: false
+control_rep_R1: https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/ctl1.subsampled.25.fastq.gz
+control_rep_R2: https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/ctl2.subsampled.25.fastq.gz
+duplication_marker: picard
+experiment_description: This is a template description of a ChIP-seq experiment, CEBPB
+  ChIP-seq on human A549 produced by the Snyder lab
+experiment_title: My Example Chip-seq Project, ENCSR000DYI (subsampled 1/25, chr19_chrM
+  only
+experimental_reads_are_paired_end: false
+experimental_rep_R1: https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/rep2.subsampled.20.fastq.gz
+experimental_rep_R2: https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/rep2.subsampled.20.fastq.gz
+genome_tsv: https://storage.googleapis.com/encode-pipeline-genome-data/genome_tsv/v4/hg38_chr19_chrM.tsv
+io_threads: 8
+output_dir: /home/shame/dev/peakpuller/output
+target_files:
 - dmr/annotated-dmrs.csv
 - qc/multiqc_report.html
-- qc/methylation_metrics.csv
-- segmentation/umr-lmr-all.csv
 temp_dir: /tmp/
+transcription_factor_or_histone_chip: tf

@@ -1,4 +1,0 @@
-
-        [console_scripts]
-        peakpuller=cli.cli:main
-    
