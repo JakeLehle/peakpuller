@@ -27,16 +27,16 @@ def config(dry_run, config_yaml, cluster_command, nodes, delete_all_output=False
         os.sys.exit(os.EX_SOFTWARE)
 
 
-def run_snakemake(dry_run, use_sample_files, cores, genome_build, cluster_command, nodes, fastq_dir, reference_fasta, group1, group2, output_dir):
+def run_snakemake(dry_run, cores, cluster_command, nodes, output_dir):
 
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
 
     yaml_config_file = os.path.join(output_dir, 'config.yaml')
 
-    cli.config.create_config(use_sample_files, genome_build, cores, fastq_dir, reference_fasta, group1, group2, output_dir, yaml_config_file)
+    cli.config.create_config(cores, output_dir, yaml_config_file)
 
-    run_snakemake_from_config(dry_run, yaml_config_file, cores, cluster_command, nodes)
+    config(dry_run, yaml_config_file, cores, cluster_command, nodes)
 
 
 def delete_all_output(dry_run, config_yaml):

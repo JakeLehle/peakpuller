@@ -1,3 +1,0 @@
-cli
-shiny
-snakemake_wrapper
