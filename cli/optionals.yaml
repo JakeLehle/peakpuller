@@ -12,17 +12,17 @@ genome_tsv:
   'https://storage.googleapis.com/encode-pipeline-genome-data/genome_tsv/v4/hg38_chr19_chrM.tsv'
 experimental_reads_are_paired_end: 
   FALSE
-control_reads_are_Paired_end:
+control_reads_are_paired_end:
   FALSE
 always_use_pooled_ctl:
   TRUE
-experimental_rep_R1: 
+experimental_rep1_R1: 
   'https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/rep2.subsampled.20.fastq.gz'
-experimental_rep_R2:
+experimental_rep2_R1:
   'https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/rep2.subsampled.20.fastq.gz'
-control_rep_R1:
+control_rep1_R1:
   'https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/ctl1.subsampled.25.fastq.gz'
-control_rep_R2:
+control_rep2_R1:
    'https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/ctl2.subsampled.25.fastq.gz'
 target_files: [
   'dmr/annotated-dmrs.csv',

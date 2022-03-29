@@ -8,26 +8,13 @@ snakemake_dir = sys.path[0]
 conda_env_dir = snakemake_dir + '/envs'
 
 output_dir = config['output_dir']
-alignment_dir = output_dir + '/alignment'
-log_dir = output_dir + '/logs'
-benchmark_dir = log_dir + '/benchmarks'
-methylation_dir = output_dir + '/methylation'
 qc_dir = output_dir + '/qc'
-mbias_dir = qc_dir + '/mbias'
-segmentation_dir = output_dir + '/segmentation'
-dmr_dir = output_dir + '/dmr'
-metilene_dir = dmr_dir + '/metilene'
-bsseq_dir = dmr_dir + '/bsseq'
-camel_dir = dmr_dir + '/camel'
-
-cgi_annotation_file = config['cgi_annotation_file']
-repeat_masker_annotation_file = config['repeat_masker_annotation_file']
-gene_annotation_file = config['gtf_annotation_file']
+caper_dir = output_dir '/caper'
+croo_dir = output_dir ' /croo'
+log_dir = output_dir '/log'
 
 num_threads = config['computing_threads']
 io_threads = config['io_threads']
-
-ref_fasta = config['ref']
 
 target_files = [ output_dir + '/' + outfile for outfile in config['target_files']]
 runtime_report = qc_dir + '/runtime.pdf'
@@ -44,7 +31,34 @@ rule all:
         mbias_ot_reports
 
 
-### ALIGNMENT
+### CRPOMWELL
+
+rule prep_caper_json:
+	output:
+	    caper_dir + '/peakpuller.json.'
+        params:
+            chip_title = config['experiment_title'],
+            chip_description = config['experiment_description'],
+            chip_genome_tsv = config['genome_tsv'],
+            chip_pipeline_type = config['transcription_factor_or_histone_chip'],
+            aligner = config['aligner'],
+            duplication_marker = config['duplication_marker'],
+            computing_threads = config['computing_threads'],
+            control_reads_are_paired = config['control_reads_are_paired_end'],
+            always_use_pooled_ctl = config['always_use_pooled_ctl'],
+            control_rep1_R1 = config['control_rep1_R1'],
+            control_rep2_R1 = config['control_rep2_R1'],
+            exp_reads_are_paired = config['experimental_reads_are_paired_end'],
+            exp_rep1_R1 = config['experimental_rep1_R1'],
+            exp_rep2_R1 = config['experimental_rep2_R1']
+        log:
+            log_dir + 'prep_caper_json.log' 
+        conda:
+            conda_env_dir + '/r.yaml'
+        script:
+            'scripts/prep_caper_json.R'
+
+
 
 rule find_fqs:
     output:
@@ -59,7 +73,7 @@ rule find_fqs:
     log:
         log_dir + '/find_fqs/{sample}.log'
     priority: 10
-    conda:
+    conda:i
         conda_env_dir + '/r.yaml'
     script:
         'scripts/findFastqs.R'

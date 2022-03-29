@@ -38,4 +38,33 @@ mkdir -p genome/hg38
 
 # Lets run the pipeline with all this information.
 
-caper run chip.wdl -i example_input_json/ENCSR936XTK_subsampled_chr19_only.json --singularity   
+caper run chip.wdl -i example_input_json/ENCSR936XTK_subsampled_chr19_only.json --singularity  
+
+#/////////////////////////////////////////////////////////////////////////////////
+# Peakpuller ChiP-seq Installation and Walkthrough
+# This is the setup giud for the peakpuller pipeline.
+# Fist let's start off my setting up a new Anaconda environment to set up the peakpuller software in.
+
+conda create -n peakpuller
+
+# Next let's pull the peakpuller repository from GitHub 
+
+git clone https://github.com/JakeLehle/peakpuller.git
+cd peakpuller
+
+# Finally let's set up the command line interface and test the installation of the peakpuller software
+
+python3 setup.py. install
+peakpuller --help
+
+# If the command outputs the usage and documnetation for peakpuller, congrats the software is installed and ready to go. Let's start testing everything out by running some sample data.
+# The pipeline is set up to always be run from a YAML config file. So the first step in the pipeline is to generate a config file, then test the pipeline, and then modify the config file to inset your samples following the same format.
+# So to generate the config file we will be using the create-config function in the peakpuller package.
+
+peakpuller create-config --help
+
+# Read over the documentation and decide on how many cores you would like to use as well as the name of the config file and the directory that you want all your results output into.
+
+peakpuller create-config --cores-per-job 8 output new-config.yaml
+
+# You will see that running this command generates the YAML config file in the current directory that has all of the information that you indicated as well as default settings for sample data to be run.   
