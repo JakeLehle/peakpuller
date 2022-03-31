@@ -9,6 +9,7 @@ DEFAULT_OPTIONALS_FILE = os.path.join(script_dir, 'optionals.yaml')
 yaml = YAML(typ='safe')
 yaml.default_flow_style = False
 
+
 def get_default_optional_parameters():
 
     with open(DEFAULT_OPTIONALS_FILE) as f:
@@ -16,6 +17,7 @@ def get_default_optional_parameters():
         default_optionals = yaml.load(f)
 
         return default_optionals
+
 
 def get_default_config(cores_per_job, output_dir):
 
