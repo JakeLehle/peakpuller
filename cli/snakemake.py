@@ -7,7 +7,7 @@ script_dir = os.path.dirname(os.path.realpath(__file__))
 snakefile_location = os.path.join(script_dir,'..','snakemake_wrapper', 'Snakefile')
 conda_prefix = os.path.abspath(os.path.join(script_dir, '..', 'snakemake_wrapper', 'conda'))
 
-def config(dry_run, config_yaml, cluster_command, nodes, delete_all_output=False):
+def config(dry_run, config_yaml, cores, cluster_command, nodes, delete_all_output=False):
 
     print("[INFO] Invoking Snakemake with config {} and {} cores.".format(config_yaml, cores))
 
@@ -25,18 +25,6 @@ def config(dry_run, config_yaml, cluster_command, nodes, delete_all_output=False
 
     if not finished_successfully:
         os.sys.exit(os.EX_SOFTWARE)
-
-
-def run_snakemake(dry_run, cores, cluster_command, nodes, output_dir):
-
-    if not os.path.exists(output_dir):
-        os.mkdir(output_dir)
-
-    yaml_config_file = os.path.join(output_dir, 'config.yaml')
-
-    cli.config.create_config(cores, output_dir, yaml_config_file)
-
-    config(dry_run, yaml_config_file, cores, cluster_command, nodes)
 
 
 def delete_all_output(dry_run, config_yaml):

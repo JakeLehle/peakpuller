@@ -11,13 +11,13 @@ def main():
 
 @main.command(help='Run the snakemake pipeline using a config file.')
 @click.option('--dry-run', is_flag=True, default=False, help='Only dry-run the workflow.')
-@click.option('--cluster', default=None, type=click.STRING, help='Submission command snakemake uses for cluster usage. Setting this parameter enables snakemake\'s cluster mode.')
 @click.option('--cores', required=True, type=click.INT, help='The number of cores to use for running the pipeline. In cluster mode, this sets cores used per node.')
+@click.option('--cluster', default=None, type=click.STRING, help='Submission command snakemake uses for cluster usage. Setting this parameter enables snakemake\'s cluster mode.')
 @click.option('--nodes', default=1, type=click.INT, help='Number of nodes to use in cluster mode.')
 @click.argument('config_yaml')
-def config(dry_run, cluster, cores, nodes, config_yaml):
+def config(dry_run, cores, cluster, nodes, config_yaml):
 
-    cli.snakemake.config(dry_run, cluster, cores, nodes, config_yaml)
+    cli.snakemake.config(dry_run, cores, cluster, nodes, config_yaml)
 
 
 @main.command(help='Create a config YAML file for running the Snakemake pipeline.')
