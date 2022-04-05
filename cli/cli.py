@@ -17,7 +17,7 @@ def main():
 @click.argument('config_yaml')
 def config(dry_run, cores, cluster, nodes, config_yaml):
 
-    cli.snakemake.config(dry_run, cores, cluster, nodes, config_yaml)
+    cli.snakemake.config(dry_run, config_yaml, cores, cluster, nodes)
 
 
 @main.command(help='Create a config YAML file for running the Snakemake pipeline.')

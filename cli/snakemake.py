@@ -15,6 +15,8 @@ def config(dry_run, config_yaml, cores, cluster_command, nodes, delete_all_outpu
         snakefile=snakefile_location,
         configfiles=[config_yaml],
         dryrun=dry_run,
+        cores=cores,
+        local_cores=cores,
         nodes=nodes,
         printshellcmds=True,
         delete_all_output=delete_all_output,

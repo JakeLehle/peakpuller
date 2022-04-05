@@ -8,9 +8,9 @@ snakemake_dir = sys.path[0]
 conda_env_dir = snakemake_dir + '/envs'
 
 output_dir = config['output_dir']
-caper_dir = output_dir '/caper'
-croo_dir = output_dir ' /croo'
-log_dir = output_dir '/log'
+caper_dir = output_dir + '/caper'
+croo_dir = output_dir + ' /croo'
+log_dir = output_dir + '/log'
 
 num_threads = config['computing_threads']
 io_threads = config['io_threads']
@@ -27,8 +27,9 @@ rule all:
 
 rule prep_caper_json:
     output:
-        caper_dir + '/peakpuller.json.'
+        caper_dir + '/peakpuller.json'
     params:
+        caper_dir = caper_dir,
         chip_title = config['experiment_title'],
         chip_description = config['experiment_description'],
         chip_genome_tsv = config['genome_tsv'],
@@ -52,9 +53,9 @@ rule prep_caper_json:
 
 rule caper:
     input:
-        caper_dir + '/peakpuller.json'
+        rules.prep_caper_json.output
     output:
-        caper_dir + '/'
+        caper_dir + '/chip/*/metadata.json'
     log:
         log_dir + '/caper.log'
     conda:
