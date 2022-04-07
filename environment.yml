@@ -3,6 +3,9 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
+  - caper
+  - docker-py
+  - croo    
   - bedtools
   - bwa
   - bwameth 0.2.0

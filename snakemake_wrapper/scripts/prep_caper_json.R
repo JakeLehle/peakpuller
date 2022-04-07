@@ -25,9 +25,9 @@ exp_rep2_R1 <- snakemake@params$exp_rep2_R1
 
 setwd(caper_dir)
 
-json_list <- list(chip.title = chip_title, chip.description = chip_description, chip.genome_tsv = chip_genome_tsv, chip.pipeline_type = chip_pipeline_type, chip.aligner = aligner, chip.dup_marker = duplication_marker, chip.ctl_paired_end = control_reads_are_paired, chip.always_use_pooled_ctl = always_use_pooled_ctl, chip.ctl_fastqs_rep1_R1 = control_rep1_R1, chip.ctl_fastqs_rep2_R1 = control_rep2_R1, chip.paired_end = exp_reads_are_paired, chip.fastqs_rep1_R1 = exp_rep1_R1, chip.fastqs_rep2_R1 = exp_rep2_R1)
+json_list <- list(chip.pipeline_type = chip_pipeline_type, chip.genome_tsv = chip_genome_tsv, chip.fastqs_rep1_R1 = list(exp_rep1_R1), chip.fastqs_rep2_R1 = list(exp_rep2_R1), chip.ctl_fastqs_rep1_R1 = list(control_rep1_R1), chip.ctl_fastqs_rep2_R1 = list(control_rep2_R1), chip.paired_end = exp_reads_are_paired, chip.title = chip_title, chip.description = chip_description)
 
-jsonData <- toJSON(json_list, indent = 4, method = "C")
+jsonData <- toJSON(json_list, indent = 2, method = "C")
 
 
 write(jsonData, "peakpuller.json")

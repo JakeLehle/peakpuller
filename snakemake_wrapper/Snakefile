@@ -55,7 +55,7 @@ rule caper:
     input:
         rules.prep_caper_json.output
     output:
-        caper_dir + '/chip/*/metadata.json'
+        caper_dir + '/metadata.json'
     log:
         log_dir + '/caper.log'
     conda:
@@ -63,7 +63,7 @@ rule caper:
     shell:
         """
         caper init local
-        caper run -i {input} --out-dir {caper_dir} chip.wdl --singularity
+        caper run -i {input} --out-dir {caper_dir} -m {output} --cromwell-stdout {log} chip.wdl --docker
         """
 
 rule croo:
