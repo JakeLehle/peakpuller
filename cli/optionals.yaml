@@ -25,6 +25,6 @@ control_rep1_R1:
 control_rep2_R1:
         'https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/ctl2.subsampled.25.fastq.gz'
 target_files: [
-  'croo/spreadsheet.tsv'
+  'croo/qc/qc.json'
 ]
 temp_dir: '/tmp/'

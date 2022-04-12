@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name='peakpuller',
-    version='0.1.0',
+    version='0.1.1',
     author='Jake Lehle',
     author_email='jake.lehle@utsa.edu',
     description='End-to-end ChIP-seq data analysis pipeline',
