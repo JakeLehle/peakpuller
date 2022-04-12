@@ -9,7 +9,7 @@ conda_env_dir = snakemake_dir + '/envs'
 
 output_dir = config['output_dir']
 caper_dir = output_dir + '/caper'
-croo_dir = output_dir + ' /croo'
+croo_dir = output_dir + '/croo'
 log_dir = output_dir + '/log'
 
 num_threads = config['computing_threads']
@@ -43,9 +43,7 @@ rule prep_caper_json:
         control_rep2_R1 = config['control_rep2_R1'],
         exp_reads_are_paired = config['experimental_reads_are_paired_end'],
         exp_rep1_R1 = config['experimental_rep1_R1'],
-        exp_rep2_R1 = config['experimental_rep2_R1']
-    log:
-        log_dir + '/prep_caper_json.log' 
+        exp_rep2_R1 = config['experimental_rep2_R1'] 
     conda:
         conda_env_dir + '/r.yaml'
     script:
@@ -57,13 +55,14 @@ rule caper:
     output:
         caper_dir + '/metadata.json'
     log:
-        log_dir + '/caper.log'
+        caper_out = log_dir + '/caper.log',
+        cromwell_out = log_dir + '/cromwell.out'
     conda:
         conda_env_dir + '/caper.yaml'   
     shell:
         """
         caper init local
-        caper run -i {input} --out-dir {caper_dir} -m {output} chip.wdl --docker 2> {log}
+        caper run -i {input} --out-dir {caper_dir} -m {output} --cromwell-stdout {log.cromwell_out} chip.wdl --docker 2> {log.caper_out}
         """
 
 rule croo:
@@ -71,8 +70,6 @@ rule croo:
         rules.caper.output
     output:
         croo_dir + '/qc/qc.json'
-    log:
-        log_dir + '/croo.log'
     conda:
         conda_env_dir + '/croo.yaml'
     shell:
@@ -80,7 +77,7 @@ rule croo:
         croo --out-def-json chip.croo.v5.json --out-dir {croo_dir} {input} 
         """
 
-rule qc_metrics
+rule qc_metrics:
     input: 
         rules.croo.output
     output:
