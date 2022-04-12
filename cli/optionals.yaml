@@ -17,7 +17,7 @@ control_reads_are_paired_end:
 always_use_pooled_ctl:
   TRUE
 experimental_rep1_R1: 
-  'https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/rep2.subsampled.20.fastq.gz'
+  'https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/rep1.subsampled.25.fastq.gz'
 experimental_rep2_R1:
   'https://storage.googleapis.com/encode-pipeline-test-samples/encode-chip-seq-pipeline/ENCSR000DYI/fastq_subsampled/rep2.subsampled.20.fastq.gz'
 control_rep1_R1:
