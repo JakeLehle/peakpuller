@@ -63,7 +63,7 @@ rule caper:
     shell:
         """
         caper init local
-        caper run -i {input} --out-dir {caper_dir} -m {output} --cromwell-stdout {log} chip.wdl --docker
+        caper run -i {input} --out-dir {caper_dir} -m {output} chip.wdl --docker 2> {log}
         """
 
 rule croo:
@@ -80,14 +80,12 @@ rule croo:
         croo --out-def-json chip.croo.v5.json --out-dir {croo_dir} {input} 
         """
 
-#rule qc_metrics
-#     input: 
-#        rules.croo.output
-#     output:
-#        croo_dir + '/spreadsheet.tsv'
-#     conda:
-#        conda_env_dir + '/qc_metrics.yaml'
-#     shell:
-#        """
-#        qc2tsv {input} > {output}
-#        """
+rule qc_metrics
+    input: 
+        rules.croo.output
+    output:
+        croo_dir + '/spreadsheet.tsv'
+    conda:
+        conda_env_dir + '/r.yaml'
+    script:
+        'scripts/qc_metrics.R'
