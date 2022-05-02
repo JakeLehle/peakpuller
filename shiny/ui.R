@@ -12,7 +12,7 @@ prismYamlDefinition <- tags$head(
 
 shinyUI(
   dashboardPage(
-    dashboardHeader(title = "WGBS browser"),
+    dashboardHeader(title = "ChIP-seq browser"),
     dashboardSidebar(
       sidebarMenuOutput("sidebarTabs")
     ),
@@ -24,18 +24,18 @@ shinyUI(
         tabItem(tabName = "summaryTab",
           fluidRow(
             box(title = "Summary", tableOutput("summaryTable"), footer = "This box shows some basic alignment statistics for each sample in the dataset."),
-            box(title = "MultiQC report", uiOutput("multiqcLink"))
+            box(title = "MultiQC report", uiOutput("multiqcLink")) #Change this to CrooQC report
           ),
           fluidRow(
             box(
               title = "IGV links",
               tableOutput("bamIgvLinks"),
-              footer = "You may copy/paste the sample's BAM links into IGV (File -> Load From URL) or use the direct IGV link."
+              footer = "You may copy/paste the sample's BAM links into IGV (File -> Load From URL) or use the direct IGV link."  #I wonder if the BAM files will work here or if I need to use the big wig files. I think it would be BigWig 
             ),
             box(
               title = "Qualimap reports",
               uiOutput("qualimapLinks"),
-              footer = "Detailed Qualimap reports for all samples are available here."
+              footer = "Detailed Qualimap reports for all samples are available here." # this has to be the BAM files to get the flagstats information from the reads.
             )
           )
         ),
@@ -49,7 +49,7 @@ shinyUI(
             )
           )
         ),
-        tabItem(tabName = "dmrTab",
+        tabItem(tabName = "dmrTab", #Change this to IDR Peaks and split between both the conservative and optimal.
           fluidRow(
             box(
               title = "Filters (CpGs, difference, length, repeats)",
@@ -131,7 +131,7 @@ shinyUI(
             )
           )
         ),
-        tabItem(tabName = "segmentationTab",
+        tabItem(tabName = "segmentationTab", # This tab can be replaced with GO analysis DAVID, Enrichr, KOBAS.
           fluidRow(
             box(
               title = "Select sample",
